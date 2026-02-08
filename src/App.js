@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Navbar from "./Navbar"; 
+import ImageCard from "./ImageCard";
+import imageData from "./data/images";
+import "./style.css";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="main-wrapper">
+      <Navbar />
+      <header className="hero-content">
+        <h1 className="title">Digital Artifacts</h1>
+        <p className="description">A curated study of light and perspective.</p>
       </header>
+
+      <section className="gallery-viewport">
+        {imageData.map((item) => (
+          <ImageCard
+            key={item.id}
+            {...item} 
+          />
+        ))}
+      </section>
     </div>
   );
-}
+};
 
 export default App;
